@@ -1,0 +1,11 @@
+---
+actors:
+  - ./target/wasm32-unknown-unknown/debug/test_s.wasm
+capabilities:
+  - image_ref: wasmcloud.azurecr.io/fs:0.3.1
+links:
+  - actor: ${ACTOR}
+    contract_id: "wasmcloud:blobstore"
+    provider_id: VC76O62NX6GXR5FLTAUT7SJCOBN6WPZMEFVN5NGQEGH3JZ5HCLNT2UJJ
+    values:
+      ROOT: /

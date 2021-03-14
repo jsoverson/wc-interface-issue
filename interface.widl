@@ -1,0 +1,5 @@
+namespace "test"
+
+interface {
+  listdir(dir: string): [string]
+}

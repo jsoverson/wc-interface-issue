@@ -1,0 +1,21 @@
+[package]
+name = "test"
+version = "0.1.0"
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wapc-guest = "0.4.0"
+wasmcloud-actor-core = { version = "0.2.2", features = ["guest"] }
+wasmcloud-actor-blobstore = {version="0.1.1", features = ["guest"]}
+rmp-serde = "0.15.4"
+log = "0.4.14"
+serde = "1.0.124"
+lazy_static = "1.4.0"
+
+[profile.release]
+# Optimize for small code size
+opt-level = "s"
+lto = true
