@@ -1,8 +1,8 @@
 # wasmcloud interface issue
 
-wapc-generated rust doesn't produce usable compatible interfaces across actors and providers (as they are defined now).
+wapc-generated rust doesn't produce usable interfaces across actors and providers (as they are defined now).
 
-This is a problem that could be fixed in wapc-codegen, actor-interfaces, or capability providers. It feels like wapc-codegen is generating un-intuitive interface signatures.
+This is a problem that could be fixed in wapc-codegen, actor-interfaces, or capability providers.
   
 E.g. with blobstore:
 
@@ -19,7 +19,7 @@ In both `fs` and `s3` providers, `list_objects` is implemented to expect a `Cont
 
 Any actor that uses an interface like this dies with a `[trap] unreachable executed`. The call outputs nothing useful by default, on either the call side or wasmcloud side.
 
-FWIW: changing the widl to use curly braces vs parens fixes this (e.g. `ListObjects{container: Container}: BlobList`). It avoids the `[Method]Args` type abstraction. It's not clear if this is expected behavior or a coincidence.
+FWIW: changing the widl to use curly braces vs parens fixes this (e.g. `ListObjects{container: Container}: BlobList`). It avoids the `[Method]Args` type abstraction. It's not clear if this is expected behavior or a coincidence, as that isn't valid syntax in similar schemas like GraphQL. 
 
 ## Steps to reproduce
 
